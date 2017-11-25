@@ -16,7 +16,7 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/webhook/',(req,res)=>{
-    if(req.query['hub.veify_token']==='blondiebytes'){
+    if(req.query['hub.veify_token']==='1369357712'){
         res.send(req.query['hub.challenge']);
     }else{
         res.send('Wrong token');
