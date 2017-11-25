@@ -53,14 +53,14 @@ app.post('/webhook', (req, res) => {
         // Iterates over each entry - there may be multiple if batched
         body.entry.forEach(function(entry) {
 
-            // Gets the message. entry.messaging is an array, but 
-            // will only ever contain one message, so we get index 0
             let webhookEvent = entry.messaging[0];
-            let webhookSender = webhookEvent.sender.id;
-            if (webhookEvent.message && event.message.text) {
-                let text = event.message.text;
-                sendText(webhookSender, 'BOT-RES:' + text);
-            }
+            console.log(webhookEvent);
+            // let webhookEvent = entry.messaging[0];
+            // let webhookSender = webhookEvent.sender.id;
+            // if (webhookEvent.message && event.message.text) {
+            //     let text = event.message.text;
+            //     sendText(webhookSender, 'BOT-RES:' + text);
+            // }
         });
 
         // Returns a '200 OK' response to all requests
