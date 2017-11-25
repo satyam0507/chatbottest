@@ -45,7 +45,7 @@ app.get('/webhook', (req, res) => {
     }
 });
 app.post('/webhook', (req, res) => {
-
+    console.log(req);
     let body = req.body;
 
     // Checks this is an event from a page subscription
@@ -56,12 +56,12 @@ app.post('/webhook', (req, res) => {
             console.log(entry);
             // Gets the message. entry.messaging is an array, but 
             // will only ever contain one message, so we get index 0
-            let webhookEvent = entry.messaging[i];
-            let webhookSender = webhookEvent.sennder.id;
-            if (webhookEvent.message && event.message.text) {
-                let text = event.message.text;
-                sendText(webhookSender, 'BOTRES:' + text);
-            }
+            // let webhookEvent = entry.messaging[i];
+            // let webhookSender = webhookEvent.sender.id;
+            // if (webhookEvent.message && event.message.text) {
+            //     let text = event.message.text;
+            //     sendText(webhookSender, 'BOT-RES:' + text);
+            // }
         });
 
         // Returns a '200 OK' response to all requests
