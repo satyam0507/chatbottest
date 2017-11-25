@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const app = express();
-const token = 'EAAFYSEszFZA4BAGeUnM8qORpFWwcfo8i9Y4NNklibYdOrZAZCOpVe3I7Fz6EYCPdJxfAkS5oGFAkZAZBQqA4c639ZCKWOQz4FKw5dcfKZCs5Cc1uPiYDTAO674LffgQ4OLuf1gstyR2ZAjtnsnEKoIT1UURerOhPzpG2ozbJukdlHAFJJUKkvAAZA';
+const token = 'EAAFVG0KU4aABAEm5BRiL9sUHz9aN8qggZC3DzswC5srZBbJb1ckOF71P7Q6EIpcH83w1IMOZBx97KmVmqyYJTgchQBlf8H7ZASeIWWyFEZBxOZCmmm51oE11OJQFoVYdpkrbnp7XMSGqqN0C4i3o9ZC8DpBnMgx5GwZAcyZBlJeFHeky4k1spohCy';
+                
 app.set('port', (process.env.PORT || 5000));
 
 app.use(bodyParser.urlencoded({
@@ -53,14 +54,14 @@ app.post('/webhook', (req, res) => {
         // Iterates over each entry - there may be multiple if batched
         body.entry.forEach(function(entry) {
 
-            let webhookEvent = entry.messaging[0];
-            console.log(webhookEvent);
             // let webhookEvent = entry.messaging[0];
-            // let webhookSender = webhookEvent.sender.id;
-            // if (webhookEvent.message && event.message.text) {
-            //     let text = event.message.text;
-            //     sendText(webhookSender, 'BOT-RES:' + text);
-            // }
+            // console.log(webhookEvent);
+            let webhookEvent = entry.messaging[0];
+            let webhookSender = webhookEvent.sender.id;
+            if (webhookEvent.message && event.message.text) {
+                let text = event.message.text;
+                sendText(webhookSender, 'BOT-RES:' + text);
+            }
         });
 
         // Returns a '200 OK' response to all requests
