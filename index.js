@@ -58,8 +58,8 @@ app.post('/webhook', (req, res) => {
             // console.log(webhookEvent);
             let webhookEvent = entry.messaging[0];
             let webhookSender = webhookEvent.sender.id;
-            if (webhookEvent.message && event.message.text) {
-                let text = event.message.text;
+            if (webhookEvent.message && webhookEvent.message.text) {
+                let text = webhookEvent.message.text;
                 sendText(webhookSender, 'BOT-RES:' + text);
             }
         });
