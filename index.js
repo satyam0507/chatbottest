@@ -45,23 +45,22 @@ app.get('/webhook', (req, res) => {
     }
 });
 app.post('/webhook', (req, res) => {
-    console.log(req);
     let body = req.body;
 
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
 
         // Iterates over each entry - there may be multiple if batched
-        body.entry.forEach(function(entry, i) {
-            console.log(entry);
+        body.entry.forEach(function(entry) {
+
             // Gets the message. entry.messaging is an array, but 
             // will only ever contain one message, so we get index 0
-            // let webhookEvent = entry.messaging[i];
-            // let webhookSender = webhookEvent.sender.id;
-            // if (webhookEvent.message && event.message.text) {
-            //     let text = event.message.text;
-            //     sendText(webhookSender, 'BOT-RES:' + text);
-            // }
+            let webhookEvent = entry.messaging[0];
+            let webhookSender = webhookEvent.sender.id;
+            if (webhookEvent.message && event.message.text) {
+                let text = event.message.text;
+                sendText(webhookSender, 'BOT-RES:' + text);
+            }
         });
 
         // Returns a '200 OK' response to all requests
@@ -78,7 +77,7 @@ function sendText(sender, text) {
         text: text
     };
     request({
-        url:'https://graph.facebook.com/v2.6/me/messages',
+        uri:'https://graph.facebook.com/v2.6/me/messages',
         qs:{access_token:token},
         method:'POST',
         json:{
