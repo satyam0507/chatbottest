@@ -104,7 +104,7 @@ function callSendAPI(sender_psid, response) {
     // Construct the message body
     let request_body = {
         "recipient": {
-            "id": token
+            "id": sender_psid
         },
         "message": response
     }
@@ -113,7 +113,7 @@ function callSendAPI(sender_psid, response) {
     request({
         "uri": "https://graph.facebook.com/v2.6/me/messages",
         "qs": {
-            "access_token": PAGE_ACCESS_TOKEN
+            "access_token": token
         },
         "method": "POST",
         "json": request_body
