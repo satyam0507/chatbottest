@@ -54,9 +54,9 @@ app.post('/webhook', (req, res) => {
         // Iterates over each entry - there may be multiple if batched
         body.entry.forEach(function(entry) {
 
-            // let webhookEvent = entry.messaging[0];
-            // console.log(webhookEvent);
-            let webhookEvent = entry.messaging[0];
+            // let webhook_event = entry.messaging[0];
+            // console.log(webhook_event);
+            let webhook_event = entry.messaging[0];
             let sender_psid = webhook_event.sender.id;
             // Check if the event is a message or postback and
             // pass the event to the appropriate handler function
