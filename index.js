@@ -78,7 +78,7 @@ app.post('/webhook', (req, res) => {
 });
 
 function firstEntity(nlp, name) {
-    console.log(npl);
+    console.log(nlp);
     return false;
     //return nlp && nlp.entities && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }
