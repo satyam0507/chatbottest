@@ -78,7 +78,9 @@ app.post('/webhook', (req, res) => {
 });
 
 function firstEntity(nlp, name) {
-    return nlp && nlp.entities && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
+    console.log(npl);
+    return false;
+    //return nlp && nlp.entities && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }
 
 // Handles messages events
@@ -131,7 +133,7 @@ function handleMessage(sender_psid, received_message) {
 
 
     // Send the response message
-    //callSendAPI(sender_psid, response);
+    callSendAPI(sender_psid, response);
 }
 
 // Handles messaging_postbacks events
