@@ -78,16 +78,16 @@ app.post('/webhook', (req, res) => {
 });
 
 function firstEntity(nlp, name) {
-    console.log(nlp);
-    return false;
-    //return nlp && nlp.entities && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
+    // console.log(nlp);
+    // return false;
+    return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
     console.log(received_message);
     let response;
-    const greeting = firstEntity(received_message.nlp, 'greeting');
+    const greeting = firstEntity(received_message.nlp, 'greetings');
     console.log(greeting);
     if (greeting && greeting.confidence > 0.8) {
         response = {
