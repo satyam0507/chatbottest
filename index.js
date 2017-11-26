@@ -85,7 +85,7 @@ function firstEntity(nlp, name) {
 function handleMessage(sender_psid, received_message) {
     console.log(received_message);
     let response;
-    const greeting = firstEntity(message.nlp, 'greeting');
+    const greeting = firstEntity(received_message.nlp, 'greeting');
     console.log(greeting);
     if (greeting && greeting.confidence > 0.8) {
         response = {
