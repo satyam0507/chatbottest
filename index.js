@@ -81,7 +81,7 @@ function firstEntity(nlp, name) {
     console.log(nlp.entities[name]);
     // return false;
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
-  }
+}
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
@@ -101,6 +101,16 @@ function handleMessage(sender_psid, received_message) {
             response = {
                 "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
             }
+            fetch('https://lit-shelf-59919.herokuapp.com/api/chatterbot/', {
+                method: POST,
+                body: JSON.stringify({
+                    text: received_message.text
+                })
+            }).then((res)=>{
+                console.log(res);
+            }).catch((err)=>{
+                console.log(err);
+            });
         } else if (received_message.attachments) {
             // Get the URL of the message attachment
             let attachment_url = received_message.attachments[0].payload.url;
